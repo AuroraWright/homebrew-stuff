@@ -9,9 +9,9 @@ class Winedevel < Formula
   homepage "https://www.winehq.org/"
 
   stable do
-    url "https://dl.winehq.org/wine/source/3.x/wine-3.18.tar.xz"
-    mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.18.tar.xz"
-    sha256 "9be8d44b1b22814c76e6214fe8ce657ae90a7a17879e5cd2b2a87ad6a1391a77"
+    url "https://dl.winehq.org/wine/source/3.x/wine-3.19.tar.xz"
+    mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.19.tar.xz"
+    sha256 "ef21c626aef09715de9640a79d42e8b5e305761d5f21491fe84d74cafa7a9c6a"
 
     resource "mono" do
       url "https://dl.winehq.org/wine/wine-mono/4.7.3/wine-mono-4.7.3.msi"
