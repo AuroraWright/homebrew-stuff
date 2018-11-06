@@ -69,8 +69,8 @@ class Winedevel < Formula
     # All of these have been reported upstream & should
     # be fixed in the next release, but please check.
     patch do
-      url "https://mirrors.ocf.berkeley.edu/debian/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
-      mirror "https://mirrorservice.org/sites/ftp.debian.org/debian/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
+      url "http://security.ubuntu.com/ubuntu/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
+      mirror "http://http.kali.org/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
       sha256 "4e145dcde596e0c406a9f482680f9ddd09bed61a0dc6d3ac7e4c77c8ae2dd383"
       apply "patches/CVE-2017-9935.patch",
             "patches/CVE-2017-18013.patch",
