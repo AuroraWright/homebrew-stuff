@@ -12,26 +12,21 @@ class Winedevel < Formula
     url "https://dl.winehq.org/wine/source/3.x/wine-3.20.tar.xz"
     mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.20.tar.xz"
     sha256 "33d61122085056e091042df7d2cbe908ffb9c06e602278611dca2eea6a566f18"
-
-    resource "mono" do
-      url "https://dl.winehq.org/wine/wine-mono/4.7.3/wine-mono-4.7.3.msi"
-      sha256 "d24a8017371c7e8224a1778bb43a113ed7ed9720efd9d0cda175d42db6106d3a"
-    end
   end
 
   head do
     url "https://source.winehq.org/git/wine.git"
-
-    resource "mono" do
-      url "https://dl.winehq.org/wine/wine-mono/4.7.1/wine-mono-4.7.1.msi"
-      sha256 "2c8d5db7f833c3413b2519991f5af1f433d59a927564ec6f38a3f1f8b2c629aa"
-    end
   end
 
   depends_on "cmake" => :build
   depends_on "makedepend" => :build
   depends_on "pkg-config" => :build
   depends_on :macos => :el_capitan
+
+  resource "mono" do
+    url "https://dl.winehq.org/wine/wine-mono/4.7.3/wine-mono-4.7.3.msi"
+    sha256 "d24a8017371c7e8224a1778bb43a113ed7ed9720efd9d0cda175d42db6106d3a"
+  end
 
   resource "gecko-x86" do
     url "https://dl.winehq.org/wine/wine-gecko/2.47/wine_gecko-2.47-x86.msi"
