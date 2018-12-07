@@ -9,9 +9,9 @@ class Winedevel < Formula
   homepage "https://www.winehq.org/"
 
   stable do
-    url "https://dl.winehq.org/wine/source/3.x/wine-3.20.tar.xz"
-    mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.20.tar.xz"
-    sha256 "33d61122085056e091042df7d2cbe908ffb9c06e602278611dca2eea6a566f18"
+    url "https://dl.winehq.org/wine/source/3.x/wine-3.21.tar.xz"
+    mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.21.tar.xz"
+    sha256 "a84cc06015df06e12c524213a98d879caa0d63f474b911cdd87f693fcfe2e0c0"
   end
 
   head do
@@ -39,9 +39,9 @@ class Winedevel < Formula
   end
 
   resource "openssl" do
-    url "https://www.openssl.org/source/openssl-1.0.2p.tar.gz"
+    url "https://www.openssl.org/source/openssl-1.0.2q.tar.gz"
     mirror "https://dl.bintray.com/homebrew/mirror/openssl--1.0.2p.tar.gz"
-    sha256 "50a98e07b1a89eb8f6a99477f262df71c6fa7bef77df4dc83025a2845c827d00"
+    sha256 "5744cfcbcec2b1b48629f7354203bc1e5e9b5466998bbccc5b5fcde3b18eb684"
   end
 
   resource "libtool" do
@@ -57,31 +57,14 @@ class Winedevel < Formula
   end
 
   resource "libtiff" do
-    url "https://download.osgeo.org/libtiff/tiff-4.0.9.tar.gz"
-    mirror "https://fossies.org/linux/misc/tiff-4.0.9.tar.gz"
-    sha256 "6e7bdeec2c310734e734d19aae3a71ebe37a4d842e0e23dbb1b8921c0026cfcd"
-
-    # All of these have been reported upstream & should
-    # be fixed in the next release, but please check.
-    patch do
-      url "http://security.ubuntu.com/ubuntu/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
-      mirror "http://http.kali.org/pool/main/t/tiff/tiff_4.0.9-6.debian.tar.xz"
-      sha256 "4e145dcde596e0c406a9f482680f9ddd09bed61a0dc6d3ac7e4c77c8ae2dd383"
-      apply "patches/CVE-2017-9935.patch",
-            "patches/CVE-2017-18013.patch",
-            "patches/CVE-2018-5784.patch",
-            "patches/CVE-2017-11613_part1.patch",
-            "patches/CVE-2017-11613_part2.patch",
-            "patches/CVE-2018-7456.patch",
-            "patches/CVE-2017-17095.patch",
-            "patches/CVE-2018-8905.patch",
-            "patches/CVE-2018-10963.patch"
-    end
+    url "https://download.osgeo.org/libtiff/tiff-4.0.10.tar.gz"
+    mirror "https://fossies.org/linux/misc/tiff-4.0.10.tar.gz"
+    sha256 "2c52d11ccaf767457db0c46795d9c7d1a8d8f76f68b0b800a3dfe45786b996e4"
   end
 
   resource "little-cms2" do
     url "https://downloads.sourceforge.net/project/lcms/lcms/2.9/lcms2-2.9.tar.gz"
-    mirror "https://mirrors.kernel.org/debian/pool/main/l/lcms2/lcms2_2.9.orig.tar.gz"
+    mirror "https://deb.debian.org/debian/pool/main/l/lcms2/lcms2_2.9.orig.tar.gz"
     sha256 "48c6fdf98396fa245ed86e622028caf49b96fa22f3e5734f853f806fbc8e7d20"
   end
 
@@ -104,8 +87,8 @@ class Winedevel < Formula
   end
 
   resource "webp" do
-    url "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.0.tar.gz"
-    sha256 "84259c4388f18637af3c5a6361536d754a5394492f91be1abc2e981d4983225b"
+    url "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.1.tar.gz"
+    sha256 "8c744a5422dbffa0d1f92e90b34186fb8ed44db93fbacb55abd751ac8808d922"
   end
 
   resource "fontconfig" do
@@ -131,7 +114,7 @@ class Winedevel < Formula
   end
 
   resource "sane-backends" do
-    url "https://mirrors.kernel.org/debian/pool/main/s/sane-backends/sane-backends_1.0.27.orig.tar.gz"
+    url "https://deb.debian.org/debian/pool/main/s/sane-backends/sane-backends_1.0.27.orig.tar.gz"
     mirror "https://fossies.org/linux/misc/sane-backends-1.0.27.tar.gz"
     sha256 "293747bf37275c424ebb2c833f8588601a60b2f9653945d5a3194875355e36c9"
   end
@@ -145,7 +128,7 @@ class Winedevel < Formula
   def openssl_arch_args
     {
       :x86_64 => %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128],
-      :i386 => %w[darwin-i386-cc],
+      :i386   => %w[darwin-i386-cc],
     }
   end
 
