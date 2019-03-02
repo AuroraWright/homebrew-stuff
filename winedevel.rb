@@ -7,16 +7,10 @@
 class Winedevel < Formula
   desc "Run Windows applications without a copy of Microsoft Windows"
   homepage "https://www.winehq.org/"
-
-  stable do
-    url "https://dl.winehq.org/wine/source/3.x/wine-3.21.tar.xz"
-    mirror "https://downloads.sourceforge.net/project/wine/Source/wine-3.21.tar.xz"
-    sha256 "a84cc06015df06e12c524213a98d879caa0d63f474b911cdd87f693fcfe2e0c0"
-  end
-
-  head do
-    url "https://source.winehq.org/git/wine.git"
-  end
+  url "https://dl.winehq.org/wine/source/4.x/wine-4.3.tar.xz"
+  mirror "https://downloads.sourceforge.net/project/wine/Source/wine-4.3.tar.xz"
+  sha256 "3db9b50f061087e7ec115a47e44d662a5b8a7fdb44264e637795508a185f0fb4"
+  head "https://source.winehq.org/git/wine.git"
 
   depends_on "cmake" => :build
   depends_on "makedepend" => :build
@@ -24,8 +18,8 @@ class Winedevel < Formula
   depends_on :macos => :el_capitan
 
   resource "mono" do
-    url "https://dl.winehq.org/wine/wine-mono/4.7.3/wine-mono-4.7.3.msi"
-    sha256 "d24a8017371c7e8224a1778bb43a113ed7ed9720efd9d0cda175d42db6106d3a"
+    url "https://dl.winehq.org/wine/wine-mono/4.7.5/wine-mono-4.7.5.msi"
+    sha256 "154d68d476cdedef56f159d837fbb5eef9358a9f85de89f86c189ec4da004b3f"
   end
 
   resource "gecko-x86" do
@@ -69,9 +63,9 @@ class Winedevel < Formula
   end
 
   resource "libpng" do
-    url "https://downloads.sourceforge.net/libpng/libpng-1.6.35.tar.xz"
-    mirror "https://sourceforge.mirrorservice.org/l/li/libpng/libpng16/1.6.35/libpng-1.6.35.tar.xz"
-    sha256 "23912ec8c9584917ed9b09c5023465d71709dce089be503c7867fec68a93bcd7"
+    url "https://downloads.sourceforge.net/libpng/libpng-1.6.36.tar.xz"
+    mirror "https://sourceforge.mirrorservice.org/l/li/libpng/libpng16/1.6.36/libpng-1.6.36.tar.xz"
+    sha256 "eceb924c1fa6b79172fdfd008d335f0e59172a86a66481e09d4089df872aa319"
   end
 
   resource "freetype" do
@@ -87,8 +81,8 @@ class Winedevel < Formula
   end
 
   resource "webp" do
-    url "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.1.tar.gz"
-    sha256 "8c744a5422dbffa0d1f92e90b34186fb8ed44db93fbacb55abd751ac8808d922"
+    url "https://storage.googleapis.com/downloads.webmproject.org/releases/webp/libwebp-1.0.2.tar.gz"
+    sha256 "3d47b48c40ed6476e8047b2ddb81d93835e0ca1b8d3e8c679afbb3004dd564b1"
   end
 
   resource "fontconfig" do
@@ -104,8 +98,8 @@ class Winedevel < Formula
   end
 
   resource "libgphoto2" do
-    url "https://downloads.sourceforge.net/project/gphoto/libgphoto/2.5.19/libgphoto2-2.5.19.tar.bz2"
-    sha256 "62523e52e3b8542301e072635b518387f2bd0948347775cf10cb2da9a6612c63"
+    url "https://downloads.sourceforge.net/project/gphoto/libgphoto/2.5.20/libgphoto2-2.5.20.tar.bz2"
+    sha256 "e10ff0140e2e5dddaf6c6d9d933ab6f8c0bc66fdf7445b1ef2ca9f4d96e68b0f"
   end
 
   resource "net-snmp" do
@@ -432,7 +426,8 @@ class Winedevel < Formula
   end
 
   test do
-    assert_equal shell_output("hostname").chomp, shell_output("#{bin}/wine hostname.exe 2>/dev/null").chomp
-    assert_equal shell_output("hostname").chomp, shell_output("#{bin}/wine64 hostname.exe 2>/dev/null").chomp
+    hostname = shell_output("hostname -s").chomp
+    assert_match shell_output("#{bin}/wine hostname.exe 2>/dev/null").chomp, hostname
+    assert_match shell_output("#{bin}/wine64 hostname.exe 2>/dev/null").chomp, hostname
   end
 end
