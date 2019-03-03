@@ -149,6 +149,7 @@ class Winedevel < Formula
   def install
     ENV.prepend_create_path "PATH", "#{libexec}/bin"
     ENV.prepend_create_path "PKG_CONFIG_PATH", "#{libexec}/lib/pkgconfig"
+    ENV["HOMEBREW_SDKROOT"]= "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk"
 
     resource("openssl").stage do
       save_env do
@@ -389,6 +390,7 @@ class Winedevel < Formula
     end
 
     mkdir "wine-64-build" do
+      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = 101200
       system "../configure", "--prefix=#{prefix}",
                              "--enable-win64",
                              "--without-x",
@@ -398,6 +400,7 @@ class Winedevel < Formula
 
     mkdir "wine-32-build" do
       ENV.m32
+      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = 101200
       system "../configure", "--prefix=#{prefix}",
                              "--with-wine64=../wine-64-build",
                              "--without-x",
