@@ -392,7 +392,7 @@ class Winedevel < Formula
     end
 
     mkdir "wine-64-build" do
-      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = 101200
+      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = "101200"
       system "../configure", "--prefix=#{prefix}",
                              "--enable-win64",
                              "--without-x",
@@ -402,7 +402,7 @@ class Winedevel < Formula
 
     mkdir "wine-32-build" do
       ENV.m32
-      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = 101200
+      ENV["HOMEBREW_MACOS_VERSION_NUMERIC"] = "101200"
       system "../configure", "--prefix=#{prefix}",
                              "--with-wine64=../wine-64-build",
                              "--without-x",
