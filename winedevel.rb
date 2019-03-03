@@ -8,7 +8,7 @@ class Winedevel < Formula
   desc "Run Windows applications without a copy of Microsoft Windows"
   homepage "https://www.winehq.org/"
   url "http://romzisos.altervista.org/wine/wine-4.3.tar.xz"
-  sha256 "c62af85444560da53c6f287f32fc4d6a5cf8606b60f5a01e08c95061b99b12e0"
+  sha256 "10fca27d6073f5c73f733dcea328be91ad2c6516e3973e2658e665d7b786aeee"
   head "https://source.winehq.org/git/wine.git"
 
   depends_on "cmake" => :build
