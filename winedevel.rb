@@ -149,7 +149,9 @@ class Winedevel < Formula
   def install
     ENV.prepend_create_path "PATH", "#{libexec}/bin"
     ENV.prepend_create_path "PKG_CONFIG_PATH", "#{libexec}/lib/pkgconfig"
-    ENV["HOMEBREW_SDKROOT"]= "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk"
+    ENV["HOMEBREW_SDKROOT"].gsub! '10.14', '10.13'
+    ENV["HOMEBREW_LIBRARY_PATHS"].gsub! '10.14', '10.13'
+    ENV["HOMEBREW_ISYSTEM_PATHS"].gsub! '10.14', '10.13'
 
     resource("openssl").stage do
       save_env do
