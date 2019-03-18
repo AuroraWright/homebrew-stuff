@@ -4,13 +4,12 @@
 #  - https://wiki.winehq.org/Mono
 # with `GECKO_VERSION` and `MONO_VERSION`, as in:
 #    https://source.winehq.org/git/wine.git/blob/refs/tags/wine-3.0:/dlls/appwiz.cpl/addons.c
-class Winedevel < Formula
+class Winestaging < Formula
   desc "Run Windows applications without a copy of Microsoft Windows"
   homepage "https://www.winehq.org/"
   url "https://dl.winehq.org/wine/source/4.x/wine-4.4.tar.xz"
   mirror "https://downloads.sourceforge.net/project/wine/Source/wine-4.4.tar.xz"
   sha256 "db3a09cf4b0b4329ffed8014073c9868b5ecb4826adfb4a91aa49bd2841207b0"
-  head "https://source.winehq.org/git/wine.git"
 
   depends_on "cmake" => :build
   depends_on "makedepend" => :build
@@ -119,6 +118,11 @@ class Winedevel < Formula
     sha256 "6c1337aee2e4bf993299851c70b7db11faec785303cfca3a5c3eb5f329ba7023"
   end
 
+  resource "staging" do
+    url "https://github.com/wine-staging/wine-staging/archive/v4.4.tar.gz"
+    sha256 "9ee7e36b099bf312ea7aa6204c65277d3717048f6375066593d2231b6c70da42"
+  end
+
   def openssl_arch_args
     {
       :x86_64 => %w[darwin64-x86_64-cc enable-ec_nistp_64_gcc_128],
@@ -152,6 +156,10 @@ class Winedevel < Formula
     ENV["HOMEBREW_SDKROOT"] = ENV["HOMEBREW_SDKROOT"].gsub '10.14', '10.13'
     ENV["HOMEBREW_LIBRARY_PATHS"] = ENV["HOMEBREW_LIBRARY_PATHS"].gsub '10.14', '10.13'
     ENV["HOMEBREW_ISYSTEM_PATHS"] = ENV["HOMEBREW_ISYSTEM_PATHS"].gsub '10.14', '10.13'
+
+    resource("staging").stage do
+        system "./patchinstall.sh", "--all", "DESTDIR=#{buildpath}"
+    end
 
     resource("openssl").stage do
       save_env do
