@@ -12,6 +12,7 @@ class Winestaging < Formula
   sha256 "db3a09cf4b0b4329ffed8014073c9868b5ecb4826adfb4a91aa49bd2841207b0"
 
   depends_on "cmake" => :build
+  depends_on "automake" => :build
   depends_on "makedepend" => :build
   depends_on "pkg-config" => :build
   depends_on :macos => :el_capitan
