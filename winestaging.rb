@@ -158,7 +158,7 @@ class Winestaging < Formula
     ENV["HOMEBREW_ISYSTEM_PATHS"] = ENV["HOMEBREW_ISYSTEM_PATHS"].gsub '10.14', '10.13'
 
     resource("staging").stage do
-        system "./patchinstall.sh", "--all", "DESTDIR=#{buildpath}"
+        system "./patches/patchinstall.sh", "DESTDIR=#{buildpath}", "--all"
     end
 
     resource("openssl").stage do
