@@ -120,7 +120,7 @@ class Winestaging < Formula
 
   resource "staging" do
     url "https://github.com/wine-staging/wine-staging/archive/v4.4.tar.gz"
-    sha256 "9ee7e36b099bf312ea7aa6204c65277d3717048f6375066593d2231b6c70da42"
+    sha256 "83de1def6167e79418527a8d120e70cc2904889a47b10b1a21f26bfc26edc306"
   end
 
   def openssl_arch_args
